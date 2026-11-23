@@ -1,0 +1,6 @@
+{
+  "name": "Revisiting Data Recovery Loops in 6G Networks",
+  "description": "Interactive 3D technical seminar presentation on Reliability, Retransmission & Latency in Next-Generation Wireless Communication.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

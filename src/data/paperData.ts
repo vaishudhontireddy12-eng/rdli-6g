@@ -1,0 +1,108 @@
+import type { CoverMeta, SlideMeta } from '../types/presentation';
+
+export const COVER_METADATA: CoverMeta = {
+  eyebrow: 'Technical Seminar',
+  title: 'Revisiting Data Recovery Loops in 6G Networks',
+  subtitle: 'Reliability, Retransmission & Latency in Next-Generation Wireless Communication',
+  presenter: 'Presented by Team of 9',
+};
+
+export const TOPIC_METADATA: SlideMeta[] = [
+  {
+    index: 0,
+    numberLabel: '01',
+    id: 'introduction',
+    title: 'Introduction & Problem Statement',
+    shortTitle: 'Problem Statement',
+    category: '01 · Context',
+    summary: 'Nested cross-layer recovery loops, upward error leakage, and latency trade-offs in 6G',
+  },
+  {
+    index: 1,
+    numberLabel: '02',
+    id: 'harq-rlc-arq',
+    title: 'HARQ & RLC ARQ',
+    shortTitle: 'HARQ & RLC ARQ',
+    category: '02 · Mechanisms',
+    summary: 'PHY/MAC soft Chase combining vs. Layer 2 RLC sliding-window retransmission loops',
+  },
+  {
+    index: 2,
+    numberLabel: '03',
+    id: 'residual-errors-model',
+    title: 'Residual Errors & Mathematical Model',
+    shortTitle: 'Mathematical Model',
+    category: '03 · Formulation',
+    summary: 'Control-channel misdetection probabilities (NACK→ACK & DTX→ACK) and residual error P_re',
+  },
+  {
+    index: 3,
+    numberLabel: '04',
+    id: 'tcp-reno-cubic',
+    title: 'TCP Reno & TCP CUBIC',
+    shortTitle: 'TCP Reno & CUBIC',
+    category: '04 · Transport Layer',
+    summary: 'Congestion window recovery under wireless residual loss and the FTP3 idle-time trade-off',
+  },
+  {
+    index: 4,
+    numberLabel: '05',
+    id: 'simulation-setup',
+    title: 'Simulation Setup',
+    shortTitle: 'Simulation Setup',
+    category: '05 · Methodology',
+    summary: '3GPP-compliant 7-site, 21-cell dense urban system-level evaluation & throughput KPIs',
+  },
+  {
+    index: 5,
+    numberLabel: '06',
+    id: 'harq-vs-l1-arq',
+    title: 'HARQ vs L1 ARQ',
+    shortTitle: 'HARQ vs L1 ARQ',
+    category: '06 · Baseline Results',
+    summary: 'Empirical CDF comparison proving soft combining gain is indispensable in 6G',
+  },
+  {
+    index: 6,
+    numberLabel: '07',
+    id: 'residual-rlc-throughput',
+    title: 'Residual Errors, RLC ARQ & Throughput',
+    shortTitle: 'Errors & Throughput',
+    category: '07 · Cross-Layer Results',
+    summary: 'User and per-packet throughput across residual error rates (P_re) and the 5×10⁻⁵ threshold',
+  },
+  {
+    index: 7,
+    numberLabel: '08',
+    id: 'results-network-delay',
+    title: 'Results & Network Delay',
+    shortTitle: 'Results & Delay',
+    category: '08 · Delay & Control Budget',
+    summary: '0–50 ms delay sweep invariance and control-channel error bounds (P_na vs P_da)',
+  },
+  {
+    index: 8,
+    numberLabel: '09',
+    id: 'conclusion',
+    title: 'Conclusion & 6G Recommendations',
+    shortTitle: 'Conclusion & 6G',
+    category: '09 · Conclusion',
+    summary: '6G control-channel design targets, leaner L2 transport, and packet-level coding',
+  },
+];
+
+// Exact simulation parameters from Table I of Uyoata et al., "Revisiting Data Recovery Loops in 6G Networks" (arXiv:2404.07579)
+export const SIMULATION_PARAMETERS = [
+  { group: 'Topology & Deployment', label: 'Network Environment', value: '3GPP Dense Urban (21 macro cells)' },
+  { group: 'Topology & Deployment', label: 'Base Stations', value: '7 sites × 3 sectors/site, 200 m ISD' },
+  { group: 'Topology & Deployment', label: 'BS RF & Antennas', value: '51 dBm Tx power, 32 Tx / 32 Rx' },
+  { group: 'Topology & Deployment', label: 'Carrier Configuration', value: '4 GHz carrier, 100 MHz BW, 30 kHz SCS' },
+  { group: 'UE & Radio Config', label: 'UE Distribution & Mobility', value: '21 UEs (1 UE/cell), 3 km/h speed' },
+  { group: 'UE & Radio Config', label: 'UE MIMO & Receiver', value: '4 Rx / 2 Tx, SU-MIMO Rank 1, LMMSE-IRC' },
+  { group: 'UE & Radio Config', label: 'Scheduling & Link Adaptation', value: 'Proportional Fair, 5 ms CQI + OLLA (0.1 BLER)' },
+  { group: 'Recovery & Transport', label: 'HARQ Configuration', value: 'Async Chase Combining (Gain 0.95), max 6 ReTX, 8 processes' },
+  { group: 'Recovery & Transport', label: 'RLC-ARQ Configuration', value: 'Max 13 ReTX, 25 ms Poll Timer, 50 ms Reassembly' },
+  { group: 'Recovery & Transport', label: 'Traffic Model', value: '35 MBytes FTP3 file, 0.25 pkt/s (~70 Mbps offered load)' },
+  { group: 'Recovery & Transport', label: 'TCP Variants & Delay', value: '1500 B MSS, Reno (3 MSS) & CUBIC (β=0.2, C=0.4), 0–50 ms' },
+  { group: 'Statistical Rigor', label: 'Simulation Horizon', value: '60 s duration (4 s warm-up), 10 random drops/seeds' },
+] as const;
